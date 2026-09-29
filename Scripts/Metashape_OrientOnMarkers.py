@@ -148,11 +148,10 @@ def find_axes_from_markers()->list:
     uz.normalize()
     yaxis.normalize()
     
-    #Cross product only guarantees a y-axis perpendicular to the marker plane--it says nothing about
-   # this assumes that your markers are facing up and on the same flat surface as the object. 
-   # The cameras that can see the marker will necessarily be above the markers so we can use the average
-   # position vectors of cameras that can see the markers to figure out of the Y axis ends up facing 
-   # in the wrong direction due to the way the marker numbers were fed into the above configuration.
+    # Cross product only guarantees a y-axis perpendicular to the marker plane--which can be either straight "up" from the plane or straight "down" from the plane.
+    # assuming that your triangle is on a flat surface with your object, it ought to be "up", but is dependendt on the order in which
+    # the markers are configured above. This double checks the axis and flips it if it is facing away from the average position vector of cameras which can "see"
+    # the markers.
 
     markernumbers = set(pt for bar in TRIANGLE["scalebars"]["bars"] for pt in bar["points"])
     observing_cameras = set()
