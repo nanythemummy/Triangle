@@ -1,4 +1,6 @@
 # Photogrammetry Triangle #
+Code and Model by Kea Johnston, Postdoctoral Scholar at ISAC at the University of Chicago, and Chicago's Field Museum
+
 The photogrammetry triangle is a tool for automating the scaling and orientation of a model built in Agisoft Metashape. 
 It can also be a useful part of the photography process.
 
