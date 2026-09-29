@@ -147,15 +147,13 @@ def find_axes_from_markers()->list:
     ux.normalize()
     uz.normalize()
     yaxis.normalize()
+    
     #Cross product only guarantees a y-axis perpendicular to the marker plane--it says nothing about
-    #which of the two perpendicular directions is physically "up". Since the triangle and the object
-    #being scanned sit on the same flat surface, and the cameras necessarily photograph the object from
-    #the side away from that surface (not through the table), the cameras' average position relative to
-    #the marker plane tells us which way is actually up: if yaxis points away from the cameras instead
-    #of toward them, flip it. Restricted to cameras that actually detected one of the triangle markers
-    #(rather than every camera in the chunk)--a camera shot through a glass table can't see the marker
-    #face at all, so this excludes those outright instead of relying on them being a small minority.
-   
+   # this assumes that your markers are facing up and on the same flat surface as the object. 
+   # The cameras that can see the marker will necessarily be above the markers so we can use the average
+   # position vectors of cameras that can see the markers to figure out of the Y axis ends up facing 
+   # in the wrong direction due to the way the marker numbers were fed into the above configuration.
+
     markernumbers = set(pt for bar in TRIANGLE["scalebars"]["bars"] for pt in bar["points"])
     observing_cameras = set()
     for markernum in markernumbers:
@@ -176,6 +174,7 @@ def find_axes_from_markers()->list:
     axes = [ux,yaxis,uz]
     print(f"returning axes {axes}")
     return axes
+
 def reorient_on_plane()->bool:
     scalemod = 1.0
     axes = find_axes_from_markers()
