@@ -1,11 +1,11 @@
 # Photogrammetry Triangle #
 Code and Model by Kea Johnston, Postdoctoral Scholar at ISAC at the University of Chicago, and Chicago's Field Museum
 
-The photogrammetry triangle is a tool for automating the scaling and orientation of a model built in Agisoft Metashape. 
+The photogrammetry triangle is a tool for automating the scaling and orientation of a model built in Agisoft Metashape Pro. 
 It can also be a useful part of the photography process.
 
 In this folder project is an STL for printing your own triangle-shaped photogrammetry scale. The triangle has three computer readable targets on it
-which can be used to set scale and orientation in Agisoft Metashape.
+which can be used to set scale and orientation in Agisoft Metashape Pro.
 From Agisoft Metashape Pro, you can run the script "Metashape_OrientOnMarkers.py" in the scripts subdirectory. If you use the triangle in the models directory in
 your model, the script will detect the markers, set the scale, and rotate the object such that it is rightside up.
 
